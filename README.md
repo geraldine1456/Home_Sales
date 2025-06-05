@@ -2,7 +2,7 @@
 
 ### 📌 Overview
 
-This project analyzes a home sales dataset using **SparkSQL** to uncover trends such as average home prices by bedroom count, home features, and view ratings. The analysis emphasizes **performance tuning** through **caching** abd **partitioning** to demonstrate Spark’s optimization capabilities.
+This project analyzes a home sales dataset using **SparkSQL** to uncover trends such as average home prices by bedroom count, home features, and view ratings. The analysis emphasizes **performance tuning** through **caching** and **partitioning** to demonstrate Spark’s optimization capabilities.
 
 ---
 
@@ -39,14 +39,12 @@ Home_Sales/
    ```bash
    git clone https://github.com/geraldine1456/Home_Sales.git
    cd Home_Sales
-````
-
+   ````
 2. Install dependencies:
 
    ```bash
    pip install pyspark findspark
    ```
-
 3. Launch Jupyter Notebook or Colab and open `Home_Sales.ipynb`.
 
 ### 🔍 Analysis Tasks
@@ -61,7 +59,7 @@ Home_Sales/
    * Without caching
    * With caching
    * With partitioned Parquet files
-   
+
 4. Measure runtime for each optimization step
 
 ---
