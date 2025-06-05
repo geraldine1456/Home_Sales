@@ -2,7 +2,7 @@
 
 ### 📌 Overview
 
-This project analyzes a home sales dataset using **SparkSQL** to uncover trends such as average home prices by bedroom count, home features, and view ratings. The analysis emphasizes **performance tuning** through **caching** and **partitioning** to demonstrate Spark’s optimization capabilities.
+This project analyzes a home sales dataset using **SparkSQL** to uncover trends such as average home prices by bedroom count, home features, and view ratings. The analysis emphasizes **performance tuning** through **caching** and **partitioning** to demonstrate how different Spark optimization strategies perform under various query conditions.
 
 ---
 
@@ -18,8 +18,8 @@ This project analyzes a home sales dataset using **SparkSQL** to uncover trends 
 Home_Sales/
 ├── Home_Sales.ipynb
 ├── README.md
-
 ```
+
 ### 🧰 Tools & Libraries
 
 | Tool         | Version    | Purpose                                         |
@@ -39,7 +39,7 @@ Home_Sales/
    ```bash
    git clone https://github.com/geraldine1456/Home_Sales.git
    cd Home_Sales
-   ````
+   ```
 2. Install dependencies:
 
    ```bash
@@ -66,21 +66,19 @@ Home_Sales/
 
 ### 📈 Runtime Results
 
-| Query Type                                   | Runtime                    |
-| -------------------------------------------- | -------------- |
-| Average price per view (uncached)            | 1.0759 seconds |
-| Average price per view (cached)              | 0.6589 seconds |
-| Average price per view (partitioned Parquet) | 0.4708 seconds |
+| Query Type                                   | Runtime        |
+| -------------------------------------------- | ---------------|
+| Average price per view (uncached)            | 1.0853 seconds |
+| Average price per view (cached)              | 0.5494 seconds |
+| Average price per view (partitioned Parquet) | 1.1926 seconds |
 
 ---
 
 ### 💡 Key Insights
 
-* **Caching** reduces runtime significantly on repeated queries.
-* **Partitioning** with Parquet files enhances performance on large-scale grouped queries.
-* Apache Spark + SQL interface offers a powerful and efficient workflow for analyzing structured data.
+* **Caching** provides dramatic performance improvements for repeated queries, reducing runtime by nearly 50% in this analysis.
+* **Partitioning** effectiveness depends on query patterns. Since our analysis grouped by view rating rather than the partition key (date_built), partitioned data showed slower performance due to the overhead of reading across multiple partition files.
+* This demonstrates a crucial principle in big data optimization: the best strategy depends on how you plan to query your data. Partitioning by date_built would excel for time-based analyses but adds overhead for queries that need to aggregate across all time periods.
+* Apache Spark's flexible optimization approaches allow data engineers to choose the right strategy based on their specific use cases and query patterns.
 
 ---
-
-
-
